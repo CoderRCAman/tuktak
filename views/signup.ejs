@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/home.css" />
+    <link rel="stylesheet" href="CSS/main.css" />  
+    <link rel="stylesheet" href="CSS/auth.css" /> 
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nabla&display=swap"
+      rel="stylesheet"
+    /> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <title>Sign Up </title>
+</head>
+<body>
+    <%- include('partials/navbar'); %> 
+    <div class="auth-hero">
+      <form class="auth-main">
+        <h1>Sign up Here!</h1> 
+        <div>
+          <p>Name</p> 
+          <input type="text" name="name" id="">
+        </div>
+        <div>
+          <p>Email</p> 
+          <input type="email" name="email" id="">
+        </div>
+        <div>
+          <p>Password</p> 
+          <input type="password" name="password" id="">
+        </div> 
+        <div class="btn-signup">
+          <button> Sign up  </button>
+        </div>
+      </form>
+    </div>
+</body>
+</html>

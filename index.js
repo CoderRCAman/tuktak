@@ -7,6 +7,8 @@ const MONGODB_URL = process.env.MONGODB_URL ;
 const cookieParser = require('cookie-parser')  
 const morgan = require('morgan') ; 
 const HomeRoutes = require('./routes/home_routes') ;
+const AuthRoutes = require('./routes/auth_routes') ;
+const LandingRoutes = require('./routes/landing_routes')
 
 //middlewares 
 app.use(express.json()) ; 
@@ -17,7 +19,9 @@ app.set('view engine' , 'ejs') ;
 app.use(express.static('public')) //this makes the public folder accessile to every client 
 
 //ALL ROUTES 
-app.use('/',HomeRoutes) ; 
+app.use('/',HomeRoutes) ;  
+app.use('/',AuthRoutes) ;  
+app.use('/',LandingRoutes)
 
 mongoose.connect(MONGODB_URL) 
 .then(mongo => console.log('Database was connected!.....')) 

@@ -1,0 +1,73 @@
+.auth-hero {
+  display: flex; 
+  height: 90vh;
+  justify-content: center;
+  align-items: center;  
+  margin: auto;
+   
+} 
+.auth-main {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; 
+    padding: 10px; 
+    font-family: 'Montserrat', sans-serif;  
+} 
+.auth-main h1 {
+    color: rgb(191, 191, 248); 
+    text-align: center;
+}  
+.btn-login {
+    display: flex;
+    justify-content: center; 
+    margin-top: 5px;
+}
+.btn-login button{
+  padding: 8px 20px; 
+  border: none; 
+  font-size: 18px;  
+  color: gray ; 
+  font-weight: bold; 
+  cursor: pointer; 
+  border: 2px green solid;
+  border-radius: 5px; 
+  color: green;
+}
+.btn-login button:hover{
+ background-color: rgb(168, 217, 168); 
+}
+.btn-signup {
+    display: flex;
+    justify-content: center; 
+    margin-top: 5px;
+}
+.btn-signup button{
+    padding: 8px 20px; 
+    border: none; 
+    font-size: 18px;  
+    color: gray ; 
+    font-weight: bold; 
+    cursor: pointer; 
+    border: 2px #f4488a solid;
+    border-radius: 5px; 
+    color: #f4488a;
+  }
+  .btn-signup button:hover{
+   background-color: #e29bb6 ;
+     
+ }
+.auth-main p {
+    color: whitesmoke; 
+
+}
+
+.auth-main input{
+  height: 2.5em; 
+  width: 280px; 
+  outline: none;  
+  border: none; 
+  border: 2px #424D5A solid;
+  border-radius: 4px;
+}
+
+.auth-main input:focus {
+   border: 2px rgb(34, 223, 69) solid;
+}
