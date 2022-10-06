@@ -1,9 +1,21 @@
 <nav class="navbar">
-  <div class="navbar-logo"> 
-    <a href="/" style="text-decoration: none;">
-        <span>TukTak</span>
+  <div class="navbar-logo">
+    <a href="/" style="text-decoration: none">
+      <span>TukTak</span>
     </a>
   </div>
+
+  <div>
+    <!-- search bar  -->
+    <%if( user ) { %>
+    <form class="search_bar">
+      <button><i class="bi bi-search"></i></button>
+      <input type="text" placeholder="Search here..." name="search" id="" />
+    </form>
+    <% } %>
+  </div>
+
+  <%if( !user ) { %>
 
   <div class="btns">
     <!-- here buttons for login and signup  -->
@@ -14,8 +26,27 @@
       <button class="btn2">SignUp</button>
     </a>
   </div>
-  <div class="btns">
-    <!-- here buttons for login and signup  -->
-    <button class="btn3">Log Out</button>
+  <% } %> <%if( user ) { %>
+
+  <div 
+   class="nav-profile"
+    style="
+      display: flex;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      margin-right: 10px;
+      cursor: pointer;
+    "
+  >
+    <img
+      style="height: 50px; width: 50px; border-radius: 50%"
+      src="https://images.pexels.com/photos/9001374/pexels-photo-9001374.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      alt=""
+    /> 
+    <div class="nav-profile-content">
+
+    </div>
   </div>
+
+  <% } %>
 </nav>

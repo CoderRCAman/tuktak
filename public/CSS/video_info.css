@@ -1,0 +1,89 @@
+.landing-video {
+    min-height: 70vh; 
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-start; 
+    position: relative;
+    top: 10.5vh;
+   
+}
+
+.video {
+    font-family: 'Montserrat', sans-serif; 
+    padding: 5px; 
+    width:400px; 
+   
+} 
+
+
+.video video {
+    width: 400px ;
+    height: 300px;
+    object-fit: cover; 
+    border-radius: 5px;
+    z-index: -100; 
+    cursor: pointer;
+}
+.video img {
+    height: 50px; 
+    width: 50px; 
+    border-radius: 50%;
+} 
+.video p {
+  color: white;    
+  text-align: center;
+} 
+
+.comments-hero {
+    padding: 20px; 
+    font-family: 'Montserrat', sans-serif;  
+    width: 50% ; 
+    margin-left: -22px; 
+    margin-top: -17px;
+} 
+
+.comments-hero h2  {
+  color: gray;
+} 
+.comment-section {
+    background-color: rgba(25, 39, 54, 0.5); 
+    padding: 1em; 
+    border-radius: 10px; 
+    min-height: 500px; 
+   
+} 
+.comment-section img {
+    height: 50px; 
+    width: 50px; 
+    border-radius: 50%;
+} 
+.comment-section textarea { 
+    margin-left: 1em; 
+    width: 80%;
+    resize: none; 
+    background-color: rgb(17, 26, 47); 
+    outline: none; 
+    border: none; 
+    font-size: 17px;
+    padding: 10px;
+    color: rgb(170, 154, 154); 
+    border-radius: 5px;
+}
+.comment-section button {
+    background: none; 
+    border: none; 
+    font-size: 20px; 
+    color: rgb(25, 108, 224,0.3);
+    cursor: pointer; 
+}
+.add-btn { 
+    background-color: rgb(7, 99, 99); 
+    padding: 10px;
+    position: fixed ;
+    bottom: 20px; 
+    left: 130px;
+    font-size: 40px;
+    color: antiquewhite; 
+    border-radius: 10px; 
+    cursor: pointer;
+}

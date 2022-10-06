@@ -1,0 +1,15 @@
+.upload-hero {
+ position: relative;  
+ font-family: 'Montserrat', sans-serif; 
+ top:10vh
+}
+
+ video { 
+    margin-top: 280px; 
+    width: 500px !important;
+    height: 300px;
+    object-fit: cover; 
+    border-radius: 5px;
+    z-index: -100; 
+    cursor: pointer;
+}

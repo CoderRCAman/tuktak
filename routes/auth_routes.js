@@ -1,9 +1,11 @@
 const router = require('express').Router() ; 
-const {getLoginPage, getSignupPage} = require('../controller/auth_controller') 
+const {getLoginPage, getSignupPage, signup, login} = require('../controller/auth_controller') 
 
 router.route('/login')  
 .get(getLoginPage)
+.post(login)
 
 router.route('/signup') 
-.get(getSignupPage)
+.get(getSignupPage) 
+.post(signup)
 module.exports = router

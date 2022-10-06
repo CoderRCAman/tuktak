@@ -9,6 +9,8 @@ const morgan = require('morgan') ;
 const HomeRoutes = require('./routes/home_routes') ;
 const AuthRoutes = require('./routes/auth_routes') ;
 const LandingRoutes = require('./routes/landing_routes')
+const UploadRoutes = require('./routes/upload_routes') ; 
+const {isAuthenticated} = require('./middleware/auth') ;
 
 //middlewares 
 app.use(express.json()) ; 
@@ -17,11 +19,11 @@ app.use(cookieParser()) ;
 app.use(morgan('tiny')) ;
 app.set('view engine' , 'ejs') ;
 app.use(express.static('public')) //this makes the public folder accessile to every client 
+app.use('/videos' ,isAuthenticated, express.static('videos'))
 
 //ALL ROUTES 
-app.use('/',HomeRoutes) ;  
-app.use('/',AuthRoutes) ;  
-app.use('/',LandingRoutes)
+app.use('/',HomeRoutes,AuthRoutes,LandingRoutes,UploadRoutes) ;  
+
 
 mongoose.connect(MONGODB_URL) 
 .then(mongo => console.log('Database was connected!.....')) 

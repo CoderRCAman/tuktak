@@ -1,7 +1,10 @@
-const { getLandingPage } = require('../controller/landing_controller');
+const {
+  getLandingPage,
+  getVideoInfo,
+} = require("../controller/landing_controller");
 
-const router = require('express').Router() ; 
-router.route('/home')
-.get(getLandingPage) ;
+const router = require("express").Router();
+router.route("/home").get(getLandingPage);
 
-module.exports = router ;
+router.route("/video/:id").get(getVideoInfo);
+module.exports = router;

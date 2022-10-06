@@ -4,16 +4,19 @@
   "description": "indian tiktok versin",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1" , 
-    "dev" : "nodemon index" 
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index"
   },
   "author": "theishing",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.2",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
+    "formidable": "^2.0.1",
+    "lodash": "^4.17.21",
     "mongoose": "^6.6.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.19"
