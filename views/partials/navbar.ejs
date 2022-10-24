@@ -5,15 +5,7 @@
     </a>
   </div>
 
-  <div>
-    <!-- search bar  -->
-    <%if( user ) { %>
-    <form class="search_bar">
-      <button><i class="bi bi-search"></i></button>
-      <input type="text" placeholder="Search here..." name="search" id="" />
-    </form>
-    <% } %>
-  </div>
+
 
   <%if( !user ) { %>
 
@@ -28,8 +20,9 @@
   </div>
   <% } %> <%if( user ) { %>
 
-  <div 
-   class="nav-profile"
+  <a href="/profile/<%=user.user_id%>"> 
+    <div
+    class="nav-profile"
     style="
       display: flex;
       margin-top: 10px;
@@ -38,15 +31,25 @@
       cursor: pointer;
     "
   >
-    <img
+   
+
+    <% if(user?.avatar) {%>
+      <img
       style="height: 50px; width: 50px; border-radius: 50%"
-      src="https://images.pexels.com/photos/9001374/pexels-photo-9001374.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      src="<%=user.avatar%>"
       alt=""
     /> 
-    <div class="nav-profile-content">
-
-    </div>
+    <%}%>
+    <%if(!user?.avatar){%>
+      <img 
+      style="height: 50px; width: 50px; border-radius: 50%"
+      src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+      alt=""
+      />
+    <%}%>
   </div>
+  </a>
+  
 
   <% } %>
 </nav>

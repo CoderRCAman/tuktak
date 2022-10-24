@@ -4,7 +4,7 @@ const App = () => {
   const [musicUsed , setMusicUsed] = React.useState('')  ; 
   const onSubmit = async(e) => { 
     e.preventDefault() ;
-    if(!videoFile ||!title ||!musicUsed) return alert('Please make sure you fill all required fields!!') ;    
+    if(!videoFile ||!title ) return alert('Please make sure you fill all required fields!!') ;    
     const data = new FormData() ;
     data.append('file' , videoFile) ;
     data.append('title' ,title) ; 
@@ -82,7 +82,8 @@ const App = () => {
             style={{ height: "40px", width: "290px", outline: "none" }}
             type="text" 
             name = 'title'
-            onChange = {e => setTitle(e.target.value)}
+            onChange = {e => setTitle(e.target.value)} 
+            required 
           />
         </div>
         <div
@@ -93,7 +94,7 @@ const App = () => {
             marginTop: "20px",
           }}
         >
-          <label style={{ color: "#EF4444" }}>Music title used*</label>
+          <label style={{ color: "#EF4444" }}>Music title used (if any)</label>
           <input
             style={{ height: "40px", width: "290px", outline: "none" }}
             type="text" 
@@ -112,7 +113,7 @@ const App = () => {
               cursor: "pointer",
               marginBotton: "10px",
             }}
-          >
+          > 
             Upload
           </button>
         </div>

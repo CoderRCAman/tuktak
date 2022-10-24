@@ -10,6 +10,7 @@ const HomeRoutes = require('./routes/home_routes') ;
 const AuthRoutes = require('./routes/auth_routes') ;
 const LandingRoutes = require('./routes/landing_routes')
 const UploadRoutes = require('./routes/upload_routes') ; 
+const ProfileRoutes = require('./routes/Profile') ;
 const {isAuthenticated} = require('./middleware/auth') ;
 
 //middlewares 
@@ -19,10 +20,12 @@ app.use(cookieParser()) ;
 app.use(morgan('tiny')) ;
 app.set('view engine' , 'ejs') ;
 app.use(express.static('public')) //this makes the public folder accessile to every client 
-app.use('/videos' ,isAuthenticated, express.static('videos'))
+app.use('/videos' ,isAuthenticated, express.static('videos')) 
+app.use('/profile' ,isAuthenticated, express.static('profile')) 
+
 
 //ALL ROUTES 
-app.use('/',HomeRoutes,AuthRoutes,LandingRoutes,UploadRoutes) ;  
+app.use('/',HomeRoutes,AuthRoutes,LandingRoutes,UploadRoutes,ProfileRoutes) ;  
 
 
 mongoose.connect(MONGODB_URL) 

@@ -27,11 +27,7 @@
     <%- include('partials/navbar'); %>
     <div class="landing-video">
       <div class="video">
-        <video
-          class="video_for"
-          src="<%=post.video_url.url%>"
-          controls
-        ></video>
+        <video class="video_for" src="<%=post.video_url.url%>" controls></video>
         <div
           style="
             display: flex;
@@ -41,47 +37,59 @@
           "
         >
           <img
-            src="https://images.pexels.com/photos/9001374/pexels-photo-9001374.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            src="<%=post.user?.avatar.url%>"
             alt=""
           />
-          <p style="margin-left: 5px">CHOMU</p>
+          <p style="margin-left: 5px"><%=post.user?.name%></p>
         </div>
         <div style="color: white">
-          #randi <br />
+        
           <span
             style="text-decoration: underline; display: block; margin-top: 5px"
           >
-            <i style="margin-right: 5px" class="bi bi-music-note"></i> music
-            notes original sound - yayagranatosy - Yaya Granatosy
+            <i style="margin-right: 5px" class="bi bi-music-note"></i> <%=post.musicTitle%>
           </span>
         </div>
       </div>
 
       <div class="comments-hero">
         <div class="comment-section">
-          <div style="display: flex">
-            <img
-              style="height: 50px; width: 50px; border-radius: 50%"
-              src="https://images.pexels.com/photos/9001374/pexels-photo-9001374.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              alt=""
-              srcset=""
-            />
-            <p style="color: gray; margin-left: 10px">Alah hu akbar!</p>
+          <div style="display:flex;justify-content:center;margin-bottom:10px;font-weight: bold;">Comments</div>
+          <div style="height: 390px; overflow-y: scroll">
+            <% if(post.comments.length>0) { %> 
+              <%post.comments.forEach(comment => { %> 
+            <div style="display: flex; margin-bottom: 10px">
+              <div> 
+                
+                <% if(comment.user?.avatar?.url) {%>
+                  <img
+                  src="<%=comment.user.avatar.url%>"
+                  alt=""
+                />
+                <%}%>
+                <%if(!comment.user?.avatar?.url){%>
+                  <img
+                  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                  alt=""
+                  />
+                <%}%>
+              </div>
+              <div style="margin-left: 5px; color: gray">
+                <span style="font-weight: bold; color: white"><%=comment.user.name%></span>
+                 <%=comment.comment%>
+              </div>
+            </div> 
+            <%})%>
+            <% }else{ %>
+            <div style="display:flex;justify-content:center;">
+              <p>NO COMMENTS YET!</p>
+            </div> 
+            <% } %>
           </div>
-          <div
-            style="
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              height: 390px;
-            "
-          >
-            <p>NO COMMENTS YET!</p>
-          </div>
-          <div style="display: flex; align-items: center">
+          <form id="sushibaka" style="display: flex; align-items: center">
             <textarea rows="4" placeholder="Add your comment here!"></textarea>
             <button style="margin-left: 10px">Post</button>
-          </div>
+          </form>
         </div>
       </div>
       <div class="add-btn">
@@ -91,5 +99,37 @@
       </div>
     </div>
     <!-- comments section  -->
+    <script>
+      let videoId = window.location.href.split("/");
+      videoId = videoId[videoId.length - 1];
+      const sushibaka = document.getElementById("sushibaka");
+      sushibaka.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const comment = e.target[0].value;
+        try {
+          const wasItOk = await fetch(
+            `http://localhost:5000/comment/${videoId}`,
+            {
+              method: "PATCH",
+              credentials: "same-origin",
+              headers: {
+                "Content-Type": "application/json",
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+              },
+              body: JSON.stringify({ comment: comment }),
+            }
+          );
+          if (wasItOk.status === 200) {
+            alert("Comment was added!");
+            window.location.reload();
+          }
+          else {
+            alert("Something went wrong!");
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      });
+    </script>
   </body>
 </html>

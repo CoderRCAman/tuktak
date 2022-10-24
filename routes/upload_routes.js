@@ -1,8 +1,12 @@
-const {getUploadPage, uploadVideo} = require('../controller/upload_controller') ;
+const {getUploadPage, uploadVideo, postComment} = require('../controller/upload_controller') ;
+const { isAuthenticated } = require('../middleware/auth');
 const router = require("express").Router(); 
 
 router.route('/upload') 
-.get(getUploadPage) 
-.post(uploadVideo)
+.get(isAuthenticated,getUploadPage) 
+.post(isAuthenticated,uploadVideo) 
 
-module.exports = router ;
+router.route('/comment/:id') 
+.patch(isAuthenticated,postComment) ; 
+
+module.exports = router ; 

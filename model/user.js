@@ -24,25 +24,29 @@ const userSchema = new mongoose.Schema({
     type: String,
     minLength: [3, "Too short password"],
     required: true,
-  }, 
-  post :[
+  },
+  avatar: {
+    url: "",
+    file_name: "",
+  },
+  post: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "post",
     },
-  ]
-}); 
-userSchema.pre('save',async function (next) { 
-	if(!this.isModified('password')) return next() ;
-	this.password = await bcrypt.hash(this.password,10)
-}) 
-//vadlidate the password 
-userSchema.methods.isValidatedPassword = async function(usersendPassword) {
-	try {
-    return await bcrypt.compare(usersendPassword ,this.password)  
-  }catch(err){ 
+  ],
+});
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
+  this.password = await bcrypt.hash(this.password, 10);
+});
+//vadlidate the password
+userSchema.methods.isValidatedPassword = async function (usersendPassword) {
+  try {
+    return await bcrypt.compare(usersendPassword, this.password);
+  } catch (err) {
     console.log(error);
-    return false ;
+    return false;
   }
-}
+};
 module.exports = mongoose.model("user", userSchema);

@@ -1,4 +1,5 @@
-const isAuthenticated = (req, res, next) => {
+const isAuthenticated = (req, res, next) => { 
+  console.log(req.cookies);
   if (req.cookies.loggedIn === 'true') return next();
   return res
     .status(401)

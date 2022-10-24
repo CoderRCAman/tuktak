@@ -28,19 +28,31 @@
                 <a href="/video/<%=p._id%>">
                   <video src="<%= p.video_url.url %>" muted ></video>
                 </a>
-                <div style="display: flex ;margin-top: 10px;margin-bottom: 10px;">
-                  
-                  <img
-                    src="https://images.pexels.com/photos/9001374/pexels-photo-9001374.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                    alt=""
-                  />
-                    <p style="margin-left: 5px">CHOMU</p>
-                    
-                  </div> 
+                <p style="color:rgb(238, 199, 199);"><%=p.title%></p>
+                <a style="text-decoration:none;" href="profile/<%=p.user?._id%>">
+                  <div style="display: flex ;margin-top: 10px;margin-bottom: 10px;">
+                    <% if(p.user?.avatar?.url) {%>
+                      <img
+                      src="<%=p.user.avatar.url%>" 
+                      alt=""
+                    />
+                    <%}%>
+                    <%if(!p.user?.avatar?.url){%>
+                      <img
+                      src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                      alt=""
+                      />
+                    <%}%>
+                   
+                      <p style="margin-left: 5px"><%=p.user?.name%></p>
+                      
+                    </div> 
+                </a>
                   <div style="color: white;" >
-                    #randi <br /> 
+                   
                     <span style="text-decoration:underline;display: block; margin-top: 5px;">
-                      <i style="margin-right:5px" class="bi bi-music-note"></i> music notes original sound - yayagranatosy - Yaya Granatosy
+                      <i style="margin-right:5px" class="bi bi-music-note"></i> 
+                      <%=p.musicTitle%>
                     </span>
                   </div>
                   
